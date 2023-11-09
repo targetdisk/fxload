@@ -3,7 +3,7 @@
 #
 
 PREFIX ?=		/usr/local
-sbindir =		$(PREFIX)/sbin
+SBINDIR ?=		$(PREFIX)/sbin
 mandir =		$(PREFIX)/share/man
 
 INSTALL =		install -cD
@@ -57,7 +57,7 @@ clean:
 
 # install, from tarball or for binary RPM
 install: $(PROG)
-	$(INSTALL_PROGRAM) $(PROG) $(sbindir)/$(PROG)
+	$(INSTALL_PROGRAM) $(PROG) $(SBINDIR)/$(PROG)
 	$(INSTALL_PROGRAM) -m 0644 $(PROG).8 $(mandir)/man8/$(PROG).8
 	$(INSTALL_PROGRAM) -m 0644 a3load.hex $(PREFIX)/share/usb/a3load.hex
 
