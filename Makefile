@@ -2,12 +2,11 @@
 # Builds "fxload" binaries, distribution tarball, and RPMs.
 #
 
-prefix =		/
-exec_prefix =		${prefix}
-sbindir =		${exec_prefix}/sbin
-mandir =		${prefix}/usr/share/man
+PREFIX ?=		/usr/local
+sbindir =		$(PREFIX)/sbin
+mandir =		$(PREFIX)/share/man
 
-INSTALL =		/usr/bin/install -cD
+INSTALL =		install -cD
 INSTALL_PROGRAM =	${INSTALL}
 
 PROG = 			fxload
@@ -60,7 +59,7 @@ clean:
 install: $(PROG)
 	$(INSTALL_PROGRAM) $(PROG) $(sbindir)/$(PROG)
 	$(INSTALL_PROGRAM) -m 0644 $(PROG).8 $(mandir)/man8/$(PROG).8
-	$(INSTALL_PROGRAM) -m 0644 a3load.hex $(prefix)/usr/share/usb/a3load.hex
+	$(INSTALL_PROGRAM) -m 0644 a3load.hex $(PREFIX)/share/usb/a3load.hex
 
 
 # make a source tarball
